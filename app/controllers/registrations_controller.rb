@@ -4,9 +4,10 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(user)
    
     if user.role == "admin"
-      admin_path
+      admin_index_path
     else
-      admins_path 
+      admins_path
     end
+    
   end
 end

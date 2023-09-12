@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
- 
-  resources :students  # Define routes for the Student resource
+  get '/admin/index', to: 'admin#index'
+
+  resources :students 
   resources :courses
   resources :enrollments
   resources :users
