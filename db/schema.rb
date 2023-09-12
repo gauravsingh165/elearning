@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_184313) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_054205) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "product_version"
@@ -18,6 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_184313) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_line_id", null: false
+    t.integer "product_version_id", null: false
+    t.index ["product_line_id"], name: "index_courses_on_product_line_id"
+    t.index ["product_version_id"], name: "index_courses_on_product_version_id"
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -46,6 +50,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_184313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_mcqs_on_course_id"
+  end
+
+  create_table "product_lines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_versions", force: :cascade do |t|
+    t.string "name"
+    t.text "features"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "queries", force: :cascade do |t|
@@ -87,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_184313) do
     t.index ["course_id"], name: "index_videos_on_course_id"
   end
 
+  add_foreign_key "courses", "product_lines"
+  add_foreign_key "courses", "product_versions"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
   add_foreign_key "essays", "courses"

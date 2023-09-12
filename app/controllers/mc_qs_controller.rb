@@ -1,2 +1,0 @@
-class McQsController < ApplicationController
-end

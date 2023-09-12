@@ -2,25 +2,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # Guest user
+    user ||= User.new 
 
-    if user.has_role?('admin')||user.has_role?('manager')
-      can :manage, [Mcq,Essay,Video,Textbook]
-      can :mark, Essay
-      can :upload,[Video,Textbook]
-    elsif user.has_role?(:tutor)
-      can :mark ,Essay
-    elsif user.has_role?(:student)
-      can :enroll, Cource 
-      can :read, [Textbook, Video]
-      can :attempt, [Mcq, Essay]
-      can :ask, Query
-    end
-    if user.has_role?('admin')
-      can :access, :user_list
-      can :filter, :user
-      can activate, :user
-      can deactivate, :user
+    if user.admin?
+      can :manage, :all
+    elsif user.manager?
+      can :manage, [MCQ, Essay, Video, Textbook, User]
+    elsif user.tutor?
+      can :manage, [MCQ, Essay]
+    elsif user.student?
+      can :read, [Course, ProductLine, ProductVersion]
+      can :manage, Enrollment, user_id: user.id
     end
   end
 end
