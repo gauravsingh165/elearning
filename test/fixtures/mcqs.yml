@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  course: one
-  question: MyText
-  answer: MyString
+  question: MyString
+  correct_option: 1
+  option1: MyString
+  option2: MyString
+  option3: MyString
 
 two:
-  course: two
-  question: MyText
-  answer: MyString
+  question: MyString
+  correct_option: 1
+  option1: MyString
+  option2: MyString
+  option3: MyString

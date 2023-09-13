@@ -1,0 +1,13 @@
+<h1>MCQ Details</h1>
+
+<div class="mcq">
+  <h2><%= @mcq.question %></h2>
+  <ul>
+    <li>Option 1: <%= @mcq.option1 %></li>
+    <li>Option 2: <%= @mcq.option2 %></li>
+    <li>Option 3: <%= @mcq.option3 %></li>
+    <li>Option 4: <%= @mcq.option4 %></li>
+  </ul>
+</div>
+
+<%= link_to "Back to MCQs", mcqs_path %>

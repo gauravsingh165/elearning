@@ -1,6 +1,15 @@
-<h1>User List</h1>
 
-<table style="width: 30%; border-collapse: collapse;">
+
+<h1 class="main-heading">Admin Courses Index</h1>
+<%= link_to 'Courses', courses_url,class:"btn btn-outline-secondary"%>
+<%= link_to 'Create Courses', new_course_path, class:"btn btn-outline-success"%><br>
+<h1> Product Version</h1>
+<%= link_to "New Product Version", new_product_version_path ,class:"btn btn-outline-info"%><br>
+<h1> Product Line</h1>
+<%= link_to 'New Product Line', new_product_line_path, class:"btn btn-outline-danger" %>
+<h1>MCQ</h1>
+<%= link_to "MCQ" ,mcqs_path ,class:"btn btn-outline-warning"%>
+<table style="width: 30%; border-collapse: collapse;"  class="custom-table">
   <thead>
     <tr>
       <th style="border: 1px solid #ccc; padding: 8px;">ID</th>
@@ -19,3 +28,88 @@
   </tbody>
 </table>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+/* Apply a background color to the entire page */
+body {
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center align the content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+   margin-left: 1240px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style table headers */
+th {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style table cells */
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Style the User List heading */
+
+
+/* Style links */
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Style links on hover */
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Style buttons on hover */
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
+</style>

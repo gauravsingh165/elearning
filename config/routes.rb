@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   get '/admin/index', to: 'admin#index'
 
+  resources :product_versions, only: [:new, :create, :show]
+  resources :product_lines, only: [:new, :create, :show]
+ 
+  resources :product_lines
+  resources :mcqs
+
   resources :students 
   resources :courses
   resources :enrollments

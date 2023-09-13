@@ -1,31 +1,20 @@
-<!-- app/views/essays/new.html.erb -->
-<h1>Create a New Essay</h1>
+
 
 <%= form_with(model: @essay, url: essays_path) do |form| %>
-  <% if @essay.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@essay.errors.count, "error") %> prohibited this essay from being saved:</h2>
-
-      <ul>
-        <% @essay.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+   <div class="field">
+    <%= form.label :course_id %>
+    <%= form.text_area :course_id%>
+  </div>
   <div class="field">
     <%= form.label :question %>
-    <%= form.text_area :question, rows: 4 %>
+    <%= form.text_area :question %>
   </div>
-<div class="field">
+  <div class="field">
     <%= form.label :answer %>
-    <%= form.text_area :answer, rows: 4 %>
+    <%= form.text_area :answer %>
   </div>
-
-  <!-- Add other fields for the essay as needed -->
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Essay' %>
   </div>
 <% end %>
+

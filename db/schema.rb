@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_12_054205) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_13_064732) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "product_version"
@@ -44,9 +44,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_054205) do
   end
 
   create_table "mcqs", force: :cascade do |t|
+    t.string "question"
+    t.integer "correct_option"
+    t.string "option1"
+    t.string "option2"
+    t.string "option3"
+    t.string "option4"
     t.integer "course_id", null: false
-    t.text "question"
-    t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_mcqs_on_course_id"

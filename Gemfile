@@ -72,3 +72,7 @@ group :test do
 end
 gem 'devise'
 gem 'cancancan'
+
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
+gem "sassc-rails"

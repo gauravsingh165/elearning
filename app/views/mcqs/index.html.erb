@@ -1,0 +1,25 @@
+<h1>MCQ Questions</h1>
+
+<% @mcqs.each do |mcq| %>
+  <div class="mcq">
+    <h2><%= mcq.question %></h2>
+    <ul>
+      <li>Option 1: <%= mcq.option1 %></li>
+      <li>Option 2: <%= mcq.option2 %></li>
+      <li>Option 3: <%= mcq.option3 %></li>
+      <li>Option 4: <%= mcq.option4 %></li>
+    </ul>
+    
+    <%= form_for mcq, url: mcq_path(mcq), method: :patch do |f| %>
+      <div class="field">
+        <%= f.label :correct_option, "Correct Option:" %><br>
+        <%= f.text_field :correct_option %>
+      </div><br>
+      <div class="actions">
+        <%= f.submit " Submit" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to "Add New MCQ", new_mcq_path %>

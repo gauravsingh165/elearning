@@ -1,0 +1,10 @@
+<!-- app/views/product_versions/show.html.erb -->
+<h1>Product Version Details</h1>
+
+<dl>
+  
+  <dd> Name:<%= @product_version.name %></dd>
+  <dd>Features:<%= @product_version.features %></dd>
+</dl>
+
+<%= link_to 'Back', product_versions_path %>

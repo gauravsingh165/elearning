@@ -6,8 +6,9 @@ class CoursesController < ApplicationController
       end
     
       def show
-        # Display course details, associated videos, MCQs, and assignments
+        # @course = Course.find(params[:id])
       end
+      
     
       def new
         @course = Course.new
@@ -21,6 +22,7 @@ class CoursesController < ApplicationController
           render :new
         end
       end
+      
     
       def edit
       end
@@ -45,8 +47,7 @@ class CoursesController < ApplicationController
       end
     
       def course_params
-        params.require(:course).permit(:title, :description)
+        params.require(:course).permit(:name, :start_date, :end_date, :product_line_id, :product_version_id)
       end
-    
     
 end
