@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validate :validate_single_admin, on: :create
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable,:confirmable
   
   enum role: { admin: 'admin', student: 'student', tutor: 'tutor' ,manager: 'manager'}
   

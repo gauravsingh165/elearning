@@ -2,6 +2,7 @@
 class McqsController < ApplicationController
   def index
     @mcqs = Mcq.all
+    @user=User.all
   end
   
   def new
@@ -18,7 +19,16 @@ class McqsController < ApplicationController
       render 'new'
     end
   end
-  
+  def update
+    @mcq = Mcq.find(params[:id])
+      if @mcq.update(mcq_params)
+        if @mcq.correct_option == @mcq.given_answer  
+          redirect_to mcq_path(@mcq), notice: 'MCQ was successfully updated.'
+        else
+          render 'new'
+      end
+    end
+  end
   def show
     @mcq = Mcq.find(params[:id])
   end
@@ -26,7 +36,7 @@ class McqsController < ApplicationController
     private
   
     def mcq_params
-      params.require(:mcq).permit(:question, :option1, :option2, :option3, :option4, :correct_option, :course_id)
+      params.require(:mcq).permit(:question, :option1, :option2, :option3, :option4, :correct_option, :course_id,:given_answer)
     end
     
 end

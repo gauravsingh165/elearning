@@ -5,9 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
    
     if user.role == "admin"
       admin_index_path
+    elsif user.role == "manager"
+      admin_index_path
+    elsif user.role =="tutor"
+      admin_index_path
     else
-      admins_path
+      students_url
     end
-    
-  end
+   end
 end

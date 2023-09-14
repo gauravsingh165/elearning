@@ -1,4 +1,8 @@
 class ProductVersionsController < ApplicationController
+  def index
+  @product_version=ProductVersion.all
+  end
+
   def new
     @product_version = ProductVersion.new
   end

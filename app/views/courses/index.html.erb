@@ -1,14 +1,77 @@
-<% @courses.each do |course| %>
-  <h1><%= course.name %></h1>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 0px;
+    }
 
-  <p><strong>Start Date:</strong> <%= course.start_date %></p>
-  <p><strong>End Date:</strong> <%= course.end_date %></p>
+    .course-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-title {
+      font-size: 50px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .course-details {
+      margin-bottom: 10px;
+    }
+
+    .btn-container {
+      text-align: left;
+    }
+
+    .btn {
+      margin: 5px;
+      padding: 10px 20px;
+      text-align: left;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .btn-info {
+      background-color: #17a2b8;
+      color: #fff;
+    }
+
+    .btn-warning {
+      background-color: #ffc107;
+      color: #000;
+    }
+  </style>
 
 
-  <%= link_to 'Edit', edit_course_path(course) %> |
-  <%= link_to 'Back', courses_path %>
-  <%= link_to "Admin Index", admin_index_path %>
-  <%= link_to "New Course", new_course_path %>
+  <h1 class="course-title">All Courses</h1>
 
-<% end %>
+  <% @courses.each do |course| %>
+    <div class="course-card">
+      <h2><%= course.name %></h2>
+
+      <div class="course-details">
+        <p><strong>Start Date:</strong> <%= course.start_date %></p>
+        <p><strong>End Date:</strong> <%= course.end_date %></p>
+      </div>
+
+      <div class="btn-container">
+        <%= link_to 'Edit', edit_course_path(course), class: "btn btn-outline-primary" %>
+        <%= link_to "Admin Index", admin_index_path, class: "btn btn-outline-info" %>
+        <%= link_to "New Course", new_course_path, class: "btn btn-outline-warning" %>
+      </div>
+    </div>
+  <% end %>
 

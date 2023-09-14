@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
 
    def index
     @mcq=Mcq.all
+    @user=User.all
    end
   end
   

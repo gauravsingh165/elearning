@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_13_064732) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_13_131716) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "product_version"
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_064732) do
     t.integer "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "given_answer"
     t.index ["course_id"], name: "index_mcqs_on_course_id"
   end
 
@@ -60,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_064732) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_active"
   end
 
   create_table "product_versions", force: :cascade do |t|
@@ -92,6 +94,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_064732) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
