@@ -1,35 +1,107 @@
-<div style='text-align:center'>
-<h1>Create a New Course</h1>
-<%= form_with(model: @course, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 0px;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    .btn-back {
+      background-color: #17a2b8;
+      color: #fff;
+    }
+  </style>
+
+  <div class="form-container">
+    <h1 class="form-title">Create a New Course</h1>
+    
+    <%= form_with(model: @course, local: true) do |form| %>
+      <div class="field">
+        <label class="form-label" for="course_name">Course Name</label>
+        <%= form.text_field :name, class: 'form-control', id: 'course_name',placeholder:"enter course" %>
+      </div>
+
+      <div class="field">
+        <label class="form-label" for="start_date">Start Date</label>
+        <%= form.date_field :start_date, class: 'form-control', id: 'start_date' %>
+      </div>
+
+      <div class="field">
+        <label class="form-label" for="end_date">End Date</label>
+        <%= form.date_field :end_date, class: 'form-control', id: 'end_date' %>
+      </div>
+
+      <div class="field">
+        <label class="form-label" for="product_line_id">Product Line</label>
+        <%= form.select :product_line_id, options_for_select(ProductLine.all.map { |pl| [pl.name, pl.id] }), { include_blank: 'Select Product Line' }, { class: 'form-control', id: 'product_line_id' } %>
+      </div>
+
+      <div class="field">
+        <label class="form-label" for="product_version_id">Product Version</label>
+        <%= form.select :product_version_id, options_for_select(ProductVersion.all.map { |pv| [pv.name, pv.id] }), { include_blank: 'Select Product Version' }, { class: 'form-control', id: 'product_version_id' } %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Create Course', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', @course, class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date, class: 'form-control' %>
-  </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_field :end_date, class: 'form-control' %>
-  </div>
- <div class="field">
-    <%= form.label :product_line_id %>
-    <%= form.select :product_line_id, options_for_select(ProductLine.all.map { |pl| [pl.name, pl.id] }) %>
-  </div>
-   <div class="field">
-    <%= form.label :product_version_id %>
-    <%= form.select :product_version_id, options_for_select(ProductVersion.all.map { |pv| [pv.name, pv.id] }) %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit 'Create Course', class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', @course, class: 'btn btn-secondary' %>
-
-  </div>
-<% end %>
-
-<%= link_to 'Back', courses_path, class: 'btn btn-secondary' %>
-</div>
