@@ -1,0 +1,20 @@
+<div style="text-align: center; max-width: 400px; margin: 0 auto;">
+  <%= form_with(model: @user, url: user_details_create_path) do |form| %>
+    <div style="margin-bottom: 10px;">
+      <%= form.label :email %><br>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <%= form.label :password %><br>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <%= form.label :role %><br>
+      <%= form.select :role, options_for_select(["student", "manager", "tutor"]), { prompt: 'Select Role' }, class: "form-control" %>
+    </div>
+    <%= form.submit "Create User", class: "btn btn-outline-success btn-block" %>
+  <% end %><br>
+<%= link_to "Back", admin_index_path, class: "btn btn-outline-secondary btn-block" %>
+
+</div>
+<br>

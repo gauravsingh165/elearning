@@ -7,14 +7,10 @@ class User < ApplicationRecord
   
   enum role: { admin: 'admin', student: 'student', tutor: 'tutor' ,manager: 'manager'}
   
-  # before_commit :after_sign_up
-
-  # # Other user model code
-  # def after_sign_up
-  #   if user.role.nill
-  #     @user.role=='students'
-  #   end
-  # end
+  
+  def after_sign_up
+      @user.role=='students'
+  end
   private
 
   def validate_single_admin
@@ -25,5 +21,4 @@ class User < ApplicationRecord
       end
     end
   end
-  
 end

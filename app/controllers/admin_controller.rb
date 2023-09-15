@@ -6,6 +6,9 @@ class AdminController < ApplicationController
     @mcqs = Mcq.all
 
    end
+   def new
+     @user=User.new
+   end
    def show
     @mcq = Mcq.find(params[:id])
 

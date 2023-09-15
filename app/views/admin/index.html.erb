@@ -1,14 +1,33 @@
 
+<aside class="sidebar">
+  <nav id="sidebarMenu" class="collapse d-lg-block bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <%= link_to "Create User", new_user_detail_path, class: "btn btn-outline-success btn-block" %>
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <%= link_to 'Courses', courses_url, class: "btn btn-outline-secondary btn-block" %>
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <%= link_to 'Create Courses', new_course_path, class: "btn btn-outline-success btn-block" %>
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <%= link_to "New Product Version", new_product_version_path, class: "btn btn-outline-info btn-block" %>
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <%= link_to 'New Product Line', new_product_line_path, class: "btn btn-outline-danger btn-block" %>
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <%= link_to "MCQ", mcqs_path, class: "btn btn-outline-warning btn-block" %>
+        </a>
+      </div>
+    </div>
+  </nav>
+</aside>
+<br>
 
-<h1 class="main-heading">Admin Courses Index</h1>
-<%= link_to 'Courses', courses_url,class:"btn btn-outline-secondary"%>
-<%= link_to 'Create Courses', new_course_path, class:"btn btn-outline-success"%><br>
-<h1> Product Version</h1>
-<%= link_to "New Product Version", new_product_version_path ,class:"btn btn-outline-info"%><br>
-<h1> Product Line</h1>
-<%= link_to 'New Product Line', new_product_line_path, class:"btn btn-outline-danger" %>
-<h1>MCQ</h1>
-<%= link_to "MCQ" ,mcqs_path ,class:"btn btn-outline-warning"%>
+</header>
 <table style="width: 30%; border-collapse: collapse;"  class="custom-table">
   <thead>
     <tr>
@@ -27,7 +46,6 @@
     <% end %>
   </tbody>
 </table>
-
 
 
 
