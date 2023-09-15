@@ -21,7 +21,7 @@ class ProductVersionsController < ApplicationController
   
     if @product_version.nil?
       flash[:alert] = 'Product version not found'
-      redirect_to product_versions_path # Redirect to index or any other page
+      redirect_to product_versions_path 
     end
   end
   def version_action

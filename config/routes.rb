@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'user_details/new'
   post 'user_details/create'
-  resources :user_details, only: [:new, :create]
-
+  resources :user_details, only: [:new, :create,:edit,:update]
+ 
   devise_for :users, controllers: { registrations: 'registrations' }
   get '/admin/index', to: 'admin#index'
   # post "/users/sign_up", to:'admin#index'

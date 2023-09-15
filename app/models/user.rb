@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # after_create :set_sub
   validate :validate_single_admin, on: :create
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable,:confirmable
@@ -8,9 +9,9 @@ class User < ApplicationRecord
   enum role: { admin: 'admin', student: 'student', tutor: 'tutor' ,manager: 'manager'}
   
   
-  def after_sign_up
-      @user.role=='students'
-  end
+  # def set_sub
+  #     self.role=["student"]
+  # end
   private
 
   def validate_single_admin

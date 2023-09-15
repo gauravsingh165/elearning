@@ -98,7 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_131716) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "role"
+    t.string "role", default: "student"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
