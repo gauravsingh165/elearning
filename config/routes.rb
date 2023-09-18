@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'textbook/index'
+  get 'textbook/new'
+  get 'textbook/edit'
+  get 'textbook/create'
+  get 'textbook/destroy'
+  get 'textbook/show'
   get 'user_details/new'
   post 'user_details/create'
   resources :user_details

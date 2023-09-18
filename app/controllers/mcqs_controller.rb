@@ -1,11 +1,16 @@
 # app/controllers/mcqs_controller.rb
 class McqsController < ApplicationController
+  load_and_authorize_resource
   def index
     @mcqs = Mcq.all
     @user=User.all
     @mcq = Mcq.new
   end
-  
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "You are not authorized to access this page."
+    redirect_to root_url
+  end
   def new
     @mcq = Mcq.new
   end
