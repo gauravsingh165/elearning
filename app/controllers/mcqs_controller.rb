@@ -3,6 +3,7 @@ class McqsController < ApplicationController
   def index
     @mcqs = Mcq.all
     @user=User.all
+    @mcq = Mcq.new
   end
   
   def new

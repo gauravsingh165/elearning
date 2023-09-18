@@ -4,9 +4,22 @@ class UsersController < ApplicationController
 
 # end
 
-#   def show
-#    @user=User.find(params[:id])
-#   end 
+  # def show
+  #  @user=User.find(params[:id])
+  # end 
+  def admin?
+    role == 'admin'
+  end
+  def manager?
+    role == 'manager'
+  end
+  def tutor?
+    role == 'tutor'
+  end
+  def student?
+    role == 'student'
+  end
+
  private
 
 

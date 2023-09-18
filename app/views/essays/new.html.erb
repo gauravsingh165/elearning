@@ -1,4 +1,5 @@
 <style>
+    /* CSS styles for form container */
     .form-container {
       width: 60%;
       margin: 0 auto;
@@ -27,7 +28,6 @@
     .actions {
       margin-top: 15px;
     }
-
     button {
       padding: 10px 20px;
       background-color: #007BFF;
@@ -37,35 +37,26 @@
       cursor: pointer;
       font-size: 16px;
     }
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #007BFF;
-      font-weight: bold;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
-    }
 </style>
   <div class="form-container">
-    <h1>New Product Version</h1>
-    <%= form_with(model: @product_version, local: true) do |form| %>
+    <h1>Create Essay</h1>
+    <%= form_with(model: @essay, url: essays_path) do |form| %>
       <div class="field">
-        <%= form.label :name %>
-        <%= form.text_field :name %>
+        <%= form.label :course_id %><br>
+        <%= form.text_field :course_id %>
       </div>
-
       <div class="field">
-        <%= form.label :features %>
-        <%= form.text_area :features %>
+        <%= form.label :question %><br>
+        <%= form.text_area :question %>
       </div>
-
+      <!--<div class="field">
+        <%= form.label :answer %><br>
+        <%= form.text_area :answer %>
+      </div>-->
       <div class="actions">
-        <%= form.submit 'Create Product Version' %>
+        <%= form.submit 'Create Essay',class:"btn btn-outline-success" %>
+           <%= link_to "Cancle" , admin_index_path , class:"btn btn-outline-primary"%>
       </div>
     <% end %>
-
-    <%= link_to 'Back', product_versions_path, class: 'back-link' %>
+ 
   </div>

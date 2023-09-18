@@ -1,16 +1,25 @@
+<br>
 <div class="course-card"> 
   <h1><%= @course.name %></h1>
-
   <p><strong>Start Date:</strong> <%= @course.start_date %></p>
   <p><strong>End Date:</strong> <%= @course.end_date %></p>
 
-<div class="btn-container">
-  <%= link_to 'Back', courses_path , class: "btn btn-outline-danger"%>
-  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-outline-primary" %>
-  <%= link_to "Admin Index", admin_index_path, class: "btn btn-outline-info" %>
-  <%= link_to "New Course", new_course_path, class: "btn btn-outline-warning" %>
+  <div class="btn-container">
+    <%= link_to 'Back', courses_path , class: "btn btn-outline-danger"%>
+    <% if can? :update, @course %>
+        <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-outline-primary" %>
+        <% end %>
+        <% if can? :update, @course %>
+        <%= link_to "Admin Index", admin_index_path, class: "btn btn-outline-info" %>
+        <% end %>
+        <% if can? :create, @course %>
+        <%= link_to "New Course", new_course_path, class: "btn btn-outline-warning" %>
+        <% end %>
+  </div>
 </div>
-</div>
+
+
+
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,8 +29,8 @@
 
     .course-card {
       background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+      border: 10px solid #F4A460;
+      border-radius: 50px;
       margin: 10px;
       padding: 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

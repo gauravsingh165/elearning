@@ -12,11 +12,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="background-color:powderblue ;">
+  <body style="background-color:PapayaWhip	 ;">
   
   <nav class="navbar navbar-expand-lg navbar-red bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">ELEARNING</a>
+    <a class="navbar-brand"href="<%= root_path if @user=current_user %>">E-LEARNING</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,6 +48,8 @@
       
     </div>
        <% if user_signed_in? %>
+       <h3 style="color:red"><%= current_user.role.capitalize%>-</h3>
+       <h3 style="color:green"><%= current_user.email.capitalize%></h3>
       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navabr-link btn btn-outline-info  rounded-0'%>
       <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link btn btn-outline-danger  rounded-0', data: { turbo_frame: 'navbar', turbo_method: :delete } %>
     <% else %>
@@ -55,26 +57,137 @@
      <%= link_to 'Login', new_user_session_path, :class => 'navabr-link btn btn-success rounded-0 '%>
      <%end%>
   </div>
-</nav>
-
-     
+</nav> 
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
     <%= yield %>
-    <br>
-<br>
-<br>
-<br>
-  <footer class="text-center text-white " style="background-color: #21081a;">
-    <div class="container p-4"></div>
+<div class="container-fluid my-5"> 
+
+  <footer class="text-center text-white" style="background-color: #caced1;">
+    <div class="container p-4">
+      <!-- Section: Images -->
+      <section class="">
+        <div class="row">
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+                 class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                 data-ripple-color="light"
+                 >
+              <img
+                   src="https://mdbootstrap.com/img/new/fluid/city/113.jpg"
+                   class="w-100"
+                   />
+              <a href="#!">
+                <div
+                     class="mask"
+                     style="background-color: rgba(251, 251, 251, 0.2);"
+                     ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+                 class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                 data-ripple-color="light"
+                 >
+              <img
+                   src="https://mdbootstrap.com/img/new/fluid/city/111.jpg"
+                   class="w-100"
+                   />
+              <a href="#!">
+                <div
+                     class="mask"
+                     style="background-color: rgba(251, 251, 251, 0.2);"
+                     ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+                 class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                 data-ripple-color="light"
+                 >
+              <img
+                   src="https://mdbootstrap.com/img/new/fluid/city/112.jpg"
+                   class="w-100"
+                   />
+              <a href="#!">
+                <div
+                     class="mask"
+                     style="background-color: rgba(251, 251, 251, 0.2);"
+                     ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+                 class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                 data-ripple-color="light"
+                 >
+              <img
+                   src="https://mdbootstrap.com/img/new/fluid/city/114.jpg"
+                   class="w-100"
+                   />
+              <a href="#!">
+                <div
+                     class="mask"
+                     style="background-color: rgba(251, 251, 251, 0.2);"
+                     ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+                 class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                 data-ripple-color="light"
+                 >
+              <img
+                   src="https://mdbootstrap.com/img/new/fluid/city/115.jpg"
+                   class="w-100"
+                   />
+              <a href="#!">
+                <div
+                     class="mask"
+                     style="background-color: rgba(251, 251, 251, 0.2);"
+                     ></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+            <div
+                 class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                 data-ripple-color="light"
+                 >
+              <img
+                   src="https://mdbootstrap.com/img/new/fluid/city/116.jpg"
+                   class="w-100"
+                   />
+              <a href="#!">
+                <div
+                     class="mask"
+                     style="background-color: rgba(251, 251, 251, 0.2);"
+                     ></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Images -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2020 Copyright:
       <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
     </div>
+    <!-- Copyright -->
   </footer>
+
+</div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>

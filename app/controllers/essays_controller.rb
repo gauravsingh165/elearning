@@ -2,7 +2,8 @@ class EssaysController < ApplicationController
   before_action :set_essay, only: [:show, :edit, :update, :destroy]
 
   def index
-    @essays = Essay.all
+    @essays = Essay.all 
+    @essay = Essay.new  
   end
 
   def show

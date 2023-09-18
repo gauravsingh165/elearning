@@ -1,13 +1,13 @@
-<h1 style="font-size: 24px;">MCQ Questions</h1>
+<h1 style="font-size: 50px; text-align:center">MCQ Questions</h1>
 
 <% @mcqs.each do |mcq| %>
   <div class="mcq" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
-    <h2 style="font-size: 18px; margin-bottom: 10px;"><%= mcq.question %></h2>
+    <h1 style="font-size: 38px; margin-bottom: 10px;"><%= mcq.question.capitalize %></h1>
     <ul>
-      <li style="margin-bottom: 5px;">Option 1: <%= mcq.option1 %></li>
-      <li style="margin-bottom: 5px;">Option 2: <%= mcq.option2 %></li>
-      <li style="margin-bottom: 5px;">Option 3: <%= mcq.option3 %></li>
-      <li style="margin-bottom: 5px;">Option 4: <%= mcq.option4 %></li>
+      <li style="margin-bottom: 5px;"><strong>Option 1: </strong><%= mcq.option1 %></li>
+      <li style="margin-bottom: 5px;"><strong>Option 2: </strong> <%= mcq.option2 %></li>
+      <li style="margin-bottom: 5px;"><strong>Option 3: </strong><%= mcq.option3 %></li>
+      <li style="margin-bottom: 5px;"><strong>Option 4: </strong> <%= mcq.option4 %></li>
 
       <%= form_for mcq, url: mcq_path(mcq), method: :patch do |f| %>
         <div class="field">
@@ -21,6 +21,7 @@
     </ul>
   </div>
 <% end %>
-
+<% if can? :create, @mcq %>
 <%= link_to "Add New MCQ", new_mcq_path, style: "font-size: 16px; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 3px;" %>
-
+<%end%>
+<%= link_to "Back" , root_path, class: "btn btn-outline-info"%>

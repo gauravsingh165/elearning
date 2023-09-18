@@ -10,3 +10,8 @@ User.create(
     password: 'password', # You should use a secure password
     role: 'admin'
   )
+  User.create(
+    email: 'admin2@gmail.com',
+    password: 'password', # You should use a secure password
+    role: 'student'
+  )

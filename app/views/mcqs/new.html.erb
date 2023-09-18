@@ -25,19 +25,21 @@
     <%= f.label :option4 %><br>
     <%= f.text_field :option4 %>
   </div>
+  <% if can? :create, @mcq %>
   <div class="field">
     <%= f.label :correct_option %><br>
     <%= f.number_field :correct_option %>
   </div>
+  <% end %>
    <div class="field"><br>
-    <%= f.label :course_id, 'Course' %>
+    <%= f.label :course_id, 'Course' %><br>
     <%= f.number_field :course_id %>
   </div>
-
+<% if can? :create, @mcq %>
 <div class="actions">
     <%= f.submit "Create MCQ" %>
   </div>
 <% end %>
-
+<% end %>
 <%= link_to "Back to MCQs", mcqs_path %>
 </div>

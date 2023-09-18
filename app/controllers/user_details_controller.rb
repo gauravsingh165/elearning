@@ -1,5 +1,14 @@
 
 class UserDetailsController < ApplicationController
+  def index
+    if params[:search]
+      @users = User.where("email LIKE ?", "%#{params[:search]}%").where.not(id: current_user.id)
+    else
+      @users = User.all.where.not(id: current_user.id)
+    end
+  
+  end
+
   def new
     @user = User.new
   end
@@ -24,7 +33,17 @@ class UserDetailsController < ApplicationController
       render :edit
     end
   end
-  
+  def show
+    @user=User.find(params[:id])
+
+  end 
+  def destroy
+    @user=User.find(params[:id])
+    @user.destroy
+
+
+  end
+
   private
 
   def user_params
