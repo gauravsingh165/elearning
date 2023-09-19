@@ -36,6 +36,9 @@ class UserDetailsController < ApplicationController
   def show
     @user=User.find(params[:id])
 
+    respond_to do |format|
+      format.turbo_stream
+    end
   end 
   def destroy
     @user=User.find(params[:id])

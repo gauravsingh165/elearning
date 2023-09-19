@@ -6,17 +6,23 @@ class Ability
 
     if user.admin?
       can :manage, :all
-      
+      can :access, :admin_panel
     elsif user.manager?
       can :manage, [Mcq, Essay, Video, Textbook, User]
+      can :access, :admin_panel
+      can :access, :essay_new
     elsif user.tutor?
       can :manage, [Mcq, Essay]
+      can :access, :admin_panel
     else
+      cannot :access, :admin_panel
+      cannot :access, :essay_new
       can :read, Video
       can :read, Course
       can :read, Essay
       can :write, Essay
       can :read , Mcq
+      cannot :read, :admin
       cannot :create, :all
       cannot :edit, :all
       cannot :update, :all

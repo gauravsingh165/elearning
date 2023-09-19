@@ -2,6 +2,7 @@ class AdminController < ApplicationController
   
   before_action :authenticate_user!
    def index
+    authorize! :access, :admin_panel 
     @users = User.all
     @courses = Course.all
     @mcqs = Mcq.all

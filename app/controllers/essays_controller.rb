@@ -10,6 +10,7 @@ class EssaysController < ApplicationController
   end
 
   def new
+    authorize! :access, :essay_new
     @essay = Essay.new
   end
 

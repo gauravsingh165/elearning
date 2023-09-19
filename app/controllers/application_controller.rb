@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_current_user  
- 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "You are not authorized to access this page."
+    redirect_to root_url
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: exception.message
