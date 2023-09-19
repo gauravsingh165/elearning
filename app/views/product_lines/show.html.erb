@@ -1,5 +1,8 @@
-<h1>All Product Lines</h1>
-
-    <li><%= @product_line.name %></li>
-  
-<%= link_to 'Back', new_product_line_path%>
+<main class="container">
+  <%= link_to sanitize("&larr; Back to quotes"), product_lines_path %>
+  <div class="header">
+    <h1>
+      <%=  @product_line.name %>
+    </h1>
+  </div>
+</main>

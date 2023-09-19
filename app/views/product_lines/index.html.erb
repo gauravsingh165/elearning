@@ -1,8 +1,19 @@
-<h1>All Product Lines</h1>
+<!--<h1>All Product Lines</h1>
 
 <ul>
   <% @product_lines.each do |product_line| %>
     <li><%= product_line.name %></li>
   <% end %>
 </ul>
-<%= link_to 'Back', new_product_line_path%>
+<%= link_to 'Back', new_product_line_path%>-->
+<div style="text-align:center">
+  <div class="container">
+    <div class="header">
+      <%= link_to "New quote",new_product_line_path,class: "btn btn--primary", data: { turbo_frame: dom_id(ProductLine.new) } %>
+    </div>
+    <%= turbo_frame_tag ProductLine.new %>
+    <%= turbo_frame_tag "product_line_frame" do %>
+      <%= render partial: 'show', locals: { product_line: @product_line } %>
+    <% end %>
+<%= turbo_stream_from "product_lines" %>  </div>
+</div>

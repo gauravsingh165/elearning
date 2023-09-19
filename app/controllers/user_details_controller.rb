@@ -1,12 +1,6 @@
-
 class UserDetailsController < ApplicationController
   def index
-    if params[:search]
-      @users = User.where("email LIKE ?", "%#{params[:search]}%").where.not(id: current_user.id)
-    else
-      @users = User.all.where.not(id: current_user.id)
-    end
-  
+  @users=User.all
   end
 
   def new
@@ -17,34 +11,31 @@ class UserDetailsController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path, notice: 'User details saved successfully!'
+      redirect_to admin_index_path, notice: 'User details saved successfully!'
     else
       render :new
     end
   end
   def edit
-   @user=User.find(params[:id])
+   @user=User.find(params[:id].to_i)
   end 
   def update
-    @user = User.find(params[:id])
+    @user=User.find(params[:id].to_i)
+
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to admin_index_path, notice: 'User was successfully updated.'
     else
       render :edit
     end
+    
   end
+  
   def show
-    @user=User.find(params[:id])
-
-    respond_to do |format|
-      format.turbo_stream
-    end
+    @user=User.find(params[:id].to_i)
   end 
   def destroy
-    @user=User.find(params[:id])
+    @user=User.find(params[:id].to_i)
     @user.destroy
-
-
   end
 
   private

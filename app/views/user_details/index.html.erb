@@ -1,0 +1,28 @@
+<h1>User Details</h1>
+
+<%= turbo_frame_tag 'user_details' do %>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <%= link_to 'Show', user_detail_path(user), remote: true, class: 'btn btn-primary' %>
+            <%= link_to 'Edit', edit_user_detail_path(user), remote: true, class: 'btn btn-secondary' %>
+            <%= link_to 'Delete', user_detail_path(user), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'New User', new_user_detail_path, remote: true, class: 'btn btn-success' %>

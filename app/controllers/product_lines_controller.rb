@@ -1,26 +1,59 @@
 class ProductLinesController < ApplicationController
-  
-    def index
-        @product_lines = ProductLine.all
+  before_action :set_product_line, only: [:show, :edit, :update, :destroy]
+
+  def index
+    # @product_lines = ProductLine.all
+    @product_lines = ProductLine.ordered
+
+  end
+
+  def show
+  end
+
+  def new
+    @product_line = ProductLine.new
+  end
+
+  def create
+    @product_line = ProductLine.new(product_line_params)
+
+    if @product_line.save
+      respond_to do |format|
+        format.html { redirect_to product_lines_path, notice: "Product Line was successfully created." }
+        format.turbo_stream
       end
-    def new
-        @product_line = ProductLine.new
-      end
-    
-      def create
-        @product_line = ProductLine.new(product_line_params)
-        if @product_line.save
-          redirect_to @product_line, notice: 'Product Line was successfully created.'
-        else
-          render :new
-        end
-      end
-      def show
-        @product_line = ProductLine.find(params[:id])
-      end
-      private
-    
-      def product_line_params
-        params.require(:product_line).permit(:name)
-      end
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product_line.update(product_line_params)
+      redirect_to product_lines_path, notice: "Product Line was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @product_line.destroy
+
+    respond_to do |format|
+      format.html { redirect_to product_lines_path, notice: "Product Line was successfully destroyed." }
+      format.turbo_stream
+    end
+  end
+
+  private
+
+  def set_product_line
+    @product_line = ProductLine.find(params[:id])
+  end
+
+  def product_line_params
+    params.require(:product_line).permit(:name)
+  end
 end

@@ -1,0 +1,6 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to product line"), admin_index_path %>
+  <%= turbo_frame_tag @product_line do %>
+    <%= render "form", product_line: @product_line %>
+  <% end %>
+</main>

@@ -69,18 +69,17 @@
     }
 </style>
 
-  <div class="container">
-    <h1>Create a New Product Line</h1>
-    <%= form_with(model: @product_line, local: true) do |form| %>
-      <form>
-        <div class="field">
-          <%= form.label :name %>
-          <%= form.text_field :name %>
-        </div>
-        <div class="actions">
-          <%= form.submit 'Create Product Line' %>
-        </div>
-      </form>
-    <% end %>
-    <a href="<%= product_lines_path %>" class="link">All Product Lines</a>
+
+
+
+<main class="container">
+  <%= link_to sanitize("&larr; Back to quotes"), root_path %>
+
+  <div class="header">
+    <h1>New ProductLine</h1>
   </div>
+
+  <%= turbo_frame_tag @product_line do %>
+    <%= render "form", product_line: @product_line %>
+  <% end %>
+</main>

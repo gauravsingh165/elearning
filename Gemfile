@@ -77,3 +77,5 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem "sassc-rails"
 gem "letter_opener", group: :development
+gem 'hotwire-rails'
+gem 'simple_form'
