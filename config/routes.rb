@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
   get '/admin/index', to: 'admin#index'
-  get "/product_versions" , to: "product_versions#index"
   resources :product_versions
   resources :product_lines
+  resources :textbooks
 
   resources :product_lines
   resources :mcqs

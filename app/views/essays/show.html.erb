@@ -1,5 +1,20 @@
-<!-- app/views/essay/show.html.erb -->
+<!-- app/views/essay/show.html.erb 
 <h1>Essay</h1>
 
 <p><strong>Question:</strong></p>
-<p><%= @essay.question %></p>
+<p><%= @essay.question %></p>-->
+
+
+ <main class="container">
+  <%= link_to sanitize("&larr; Back to quotes"), essays_path%>
+  <div class="header">
+  <h1>Question-
+    <%=  @essay.question %>
+    </h1>
+    <h4>Answer-<br>
+      <%=  @essay.answer %>
+      
+    </h4>
+    
+  </div>
+</main>

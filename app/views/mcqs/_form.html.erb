@@ -1,0 +1,18 @@
+<%= simple_form_for product_version, html: { class: "product-version form" } do |f| %>
+  <% if product_version.errors.any? %>
+    <div class="error-message">
+      <%= product_version.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :question, input_html: { autofocus: true } %>
+   <%= f.input :option1, input_html: { autofocus: true } %>
+    <%= f.input :option2, input_html: { autofocus: true } %>
+     <%= f.input :option3, input_html: { autofocus: true } %>
+      <%= f.input :option4, input_html: { autofocus: true } %>
+       <%= f.input :correct_option, input_html: { autofocus: true } %>
+        <%= f.input :course_id, input_html: { autofocus: true } %>
+   <%= f.input :features, input_html: { autofocus: true } %>
+  <%= link_to "Cancel", product_versions_path, class: "btn btn--light" %>
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>

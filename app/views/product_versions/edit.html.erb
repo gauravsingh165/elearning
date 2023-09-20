@@ -1,10 +1,5 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Back to product version"), root_path %>
-
-  <div class="header">
-    <h1>New ProductVersion</h1>
-  </div>
-
+  <%= link_to sanitize("&larr; Back to product line"), admin_index_path %>
   <%= turbo_frame_tag @product_version do %>
     <%= render "form", product_version: @product_version %>
   <% end %>

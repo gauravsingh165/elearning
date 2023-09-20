@@ -1,0 +1,23 @@
+<% @essays.each do |essay| %>
+  <%= form_for essay do |f| %>
+  <%= turbo_frame_tag "essay_#{essay.id}" do %>
+    <div class="essay">
+
+      <%= link_to essay.question, essay_path(essay), data: { turbo_frame: "_top" } %>
+      <div class="essay__actions">
+        <%# <%= button_to "Delete", essay_path(essay), method: :delete, class: "btn btn--light" %> 
+        <%= link_to "Edit", edit_essay_path(essay), class: "btn btn--light" %>
+    
+        <%= f.text_area :answer, rows: 4 %>
+     
+        <%= f.submit "Submit" %>
+     
+      </div>
+    </div>
+    <%end%>
+  <% end %>
+<% end %>
+
+<%= turbo_stream_from @essays %>
+
+

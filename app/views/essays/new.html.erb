@@ -1,3 +1,4 @@
+<!--
 <style>
     /* CSS styles for form container */
     .form-container {
@@ -49,14 +50,25 @@
         <%= form.label :question %><br>
         <%= form.text_area :question %>
       </div>
-      <!--<div class="field">
+      <%# <div class="field">
         <%= form.label :answer %><br>
         <%= form.text_area :answer %>
-      </div>-->
+      </div> %>
       <div class="actions">
         <%= form.submit 'Create Essay',class:"btn btn-outline-success" %>
            <%= link_to "Cancle" , admin_index_path , class:"btn btn-outline-primary"%>
       </div>
     <% end %>
  
+  </div>-->
+<main class="container">
+  <%= link_to sanitize("&larr; Back to product version"), root_path %>
+
+  <div class="header">
+    <h1>New Essay</h1>
   </div>
+
+  <%= turbo_frame_tag @essay do %>
+    <%= render "form", essay: @essay %>
+  <% end %>
+</main>

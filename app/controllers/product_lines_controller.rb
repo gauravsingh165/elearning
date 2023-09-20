@@ -1,10 +1,9 @@
 class ProductLinesController < ApplicationController
   before_action :set_product_line, only: [:show, :edit, :update, :destroy]
-
   def index
-    # @product_lines = ProductLine.all
-    @product_lines = ProductLine.ordered
+    @product_lines = ProductLine.all
 
+    render 'product_lines/index' 
   end
 
   def show
@@ -26,7 +25,18 @@ class ProductLinesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  # def create
+  #   @product_line = ProductLine.new(product_line_params)
+  
+  #   if @product_line.save
+  #     respond_to do |format|
+  #       format.html { redirect_to @product_line }
+  #       format.turbo_stream { render turbo_stream: turbo_stream.prepend("product_lines", @product_line) }
+  #     end
+  #   else
+  #     render :new, status: :unprocessable_entity    end
+  # end
+  
   def edit
   end
 

@@ -1,3 +1,4 @@
+<!--
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -70,4 +71,19 @@
       </div>
     <% end %>
   <% end %>
+</div>-->
+
+<div style="text-align:center">
+  <div class="essay">
+    <div class="header">
+    <% if can? :create, @mcq %>
+      <%= link_to "New  Essay",new_essay_path,class: "btn btn--primary", data: { turbo_frame: dom_id(Essay.new) } %>
+      <%end%>
+    </div>
+    <%= turbo_frame_tag Essay.new %>
+    <%= turbo_frame_tag "essay_frame" do %>
+      <%= render 'essay'%>
+    <% end %>
+    <%= turbo_stream_from @essays %>  
+  </div>
 </div>

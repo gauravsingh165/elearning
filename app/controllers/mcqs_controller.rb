@@ -1,4 +1,3 @@
-# app/controllers/mcqs_controller.rb
 class McqsController < ApplicationController
   load_and_authorize_resource
   def index

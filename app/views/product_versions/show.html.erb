@@ -1,3 +1,4 @@
+
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -44,12 +45,15 @@
       color: #fff;
     }
 </style>
-  <div class="container">
-    <h1>Product Version Details</h1>
-    <dl>
-      <dd>Name: <%= @product_version.name %></dd>
-      <dd>Features: <%= @product_version.features %></dd>
-    </dl>
-
-    <%= link_to 'Back', product_versions_path, class: 'back-link' %>
+ <main class="container">
+  <%= link_to sanitize("&larr; Back to quotes"), product_versions_url %>
+  <div class="header">
+    <h1>
+      <%=  @product_version.name %>
+      
+    </h1>
+    <h1>
+    <%=  @product_version.features %>
+    </h1>
   </div>
+</main>

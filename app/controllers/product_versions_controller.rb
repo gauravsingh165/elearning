@@ -1,7 +1,12 @@
 class ProductVersionsController < ApplicationController
-  
+  before_action :set_product_version, only: [:show, :edit, :update, :destroy]
+
   def index
-  @product_version=ProductVersion.all
+    @product_versions = ProductVersion.all
+  end
+
+  def show
+
   end
 
   def new
@@ -10,31 +15,49 @@ class ProductVersionsController < ApplicationController
 
   def create
     @product_version = ProductVersion.new(product_version_params)
-
-    if @product_version.save
-      redirect_to @product_version, notice: 'Product version was successfully created.'
-    else
-      render :new
-    end
-  end
-  def show
-    @product_version = ProductVersion.find_by(id: params[:id])
   
-    if @product_version.nil?
-      flash[:alert] = 'Product version not found'
-      redirect_to product_versions_path 
-    end
-  end
-  def version_action
-    if current_user.product_version.name == 'Paid'
-    
-    elsif current_user.product_version.name == 'Free trial'
-     
+    if @product_version.save
+      respond_to do |format|
+        format.html { redirect_to product_versions_url, notice: 'Product version was successfully created.' }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("product_versions_list", partial: "product_versions/product_version", locals: { product_version: @product_version }) }
+      end
     else
-     
+      render :new, status: :unprocessable_entity
     end
   end
+ 
+  
+  def edit
+  end
+
+  def update
+    if @product_version.update(product_version_params)
+      redirect_to product_versions_path, notice: 'Product version was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+  
+    if @product_version
+      @product_version.destroy
+  
+      respond_to do |format|
+        format.html { redirect_to product_versions_path, notice: 'Product version was successfully deleted.' }
+        format.turbo_stream { render turbo_stream: turbo_stream.remove(@product_version) }
+      end
+    else
+      # Handle the case where @product_version is nil, e.g., by redirecting or displaying an error message.
+    end
+  end
+  
+
   private
+
+  def set_product_version
+    @product_version = ProductVersion.find(params[:id])
+  end
 
   def product_version_params
     params.require(:product_version).permit(:name, :features)

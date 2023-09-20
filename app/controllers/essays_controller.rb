@@ -2,8 +2,8 @@ class EssaysController < ApplicationController
   before_action :set_essay, only: [:show, :edit, :update, :destroy]
 
   def index
-    @essays = Essay.all 
-    @essay = Essay.new  
+    @essays = Essay.all
+    @essay = Essay.new  # Initialize a new Essay instance for use with Turbo Streams
   end
 
   def show
@@ -18,9 +18,12 @@ class EssaysController < ApplicationController
     @essay = Essay.new(essay_params)
 
     if @essay.save
-      redirect_to @essay, notice: 'Essay was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to @essay, notice: 'Essay was successfully created.' }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@essay) }
+      end
     else
-      render :new
+      render turbo_stream: turbo_stream.replace(@essay), status: :unprocessable_entity
     end
   end
 
@@ -29,15 +32,22 @@ class EssaysController < ApplicationController
 
   def update
     if @essay.update(essay_params)
-      redirect_to @essay, notice: 'Essay was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @essay, notice: 'Essay was successfully updated.' }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@essay) }
+      end
     else
-      render :edit
+      render turbo_stream: turbo_stream.replace(@essay), status: :unprocessable_entity
     end
   end
 
   def destroy
     @essay.destroy
-    redirect_to essays_url, notice: 'Essay was successfully destroyed.'
+
+    respond_to do |format|
+      format.html { redirect_to essays_url, notice: 'Essay was successfully destroyed.' }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@essay) }
+    end
   end
 
   private
@@ -50,3 +60,4 @@ class EssaysController < ApplicationController
     params.require(:essay).permit(:question, :answer, :course_id)
   end
 end
+
