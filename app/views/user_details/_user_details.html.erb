@@ -1,0 +1,40 @@
+<!--
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td>
+          <%= turbo_frame_tag "user_#{user.id}" do %>
+            <%= link_to "Edit", edit_user_detail_url(user), remote: true, data: { turbo_frame: "user_#{user.id}" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>-->
+
+<h1>All User</h1>
+<% @users.each do |user| %>
+  <%= turbo_frame_tag user do %>
+    <div class="user_details">
+     <h2><strong>Email- <%=  user.email%></strong></h2><br>
+      <h3>Role-<%=  user.role%></h3>
+      <div class="header">
+        <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Edit", edit_user_detail_path(user), class: "btn btn-outline-info rounded-0" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+

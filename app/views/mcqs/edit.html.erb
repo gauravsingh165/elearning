@@ -1,0 +1,6 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to mcq"), admin_index_path %>
+  <%= turbo_frame_tag @mcq do %>
+    <%= render "form", mcq: @mcq %>
+  <% end %>
+</main>

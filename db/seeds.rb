@@ -7,11 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 User.create(
     email: 'admin@gmail.com',
-    password: 'password', # You should use a secure password
+    password: '123456', # You should use a secure password
     role: 'admin'
   )
-  User.create(
-    email: 'admin2@gmail.com',
-    password: 'password', # You should use a secure password
-    role: 'student'
-  )
+  # User.create(
+  #   email: 'admin2@gmail.com',
+  #   password: 'password', # You should use a secure password
+  #   role: 'student'
+  # )

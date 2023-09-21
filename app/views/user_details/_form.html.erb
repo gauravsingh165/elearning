@@ -1,4 +1,4 @@
-<div style="text-align: center; max-width: 400px; margin: 0 auto;">
+<!--<div style="text-align: center; max-width: 400px; margin: 0 auto;">
   <%= form_with(model: @user, url: user_details_create_path) do |form| %>
     <div style="margin-bottom: 10px;">
       <%= form.label :email %><br>
@@ -17,5 +17,19 @@
 <%= link_to "Back", admin_index_path, class: "btn btn-outline-secondary btn-block" %>
 
 </div>
-<br>
+<br>-->
 
+<%= simple_form_for @user, html: { class: "user_details" } do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error-message">
+      <%= @user.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :email, input_html: { autofocus: true } %>
+   <%= f.input :password_field, input_html: { autofocus: true } %>
+    <%= f.input :role, input_html: { autofocus: true } %>
+
+  <%= link_to "Cancel", user_details_path, class: "btn btn--light" %>
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>

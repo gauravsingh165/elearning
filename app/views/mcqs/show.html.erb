@@ -1,4 +1,4 @@
-<h1>MCQ Details</h1>
+<!--<h1>MCQ Details</h1>
 
 <div class="mcq">
   <h2><%= @mcq.question %></h2>
@@ -10,4 +10,35 @@
   </ul>
 </div>
 
-<%= link_to "Back to MCQs", mcqs_path %>
+<%= link_to "Back to MCQs", mcqs_path %>-->
+<main class="container">
+  <%= link_to sanitize("&larr; Back to mcqs"), mcqs_path %>
+  <div class="header">
+    <h1>
+      <%=  @mcq.question %>
+    </h1>
+    <ol>
+    <h3>
+      <li><%=  @mcq.option1 %></li>
+    </h3>
+      <h3>
+      <li><%=  @mcq.option2 %></li>
+    </h3>
+      <h3>
+      <li><%=  @mcq.option3 %></li>
+    </h3>
+      <h3>
+      <li><%=  @mcq.option4 %></li>
+    </h3>
+    <ol>
+<%= form_for @mcq, url: mcq_path(@mcq), method: :patch do |f| %>
+        <div class="field">
+          <%= f.label :given_answer, "Your Answer:", style: "font-weight: bold;" %><br>
+          <%= f.text_field :given_answer, style: "width: 100%;" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Submit", style: "background-color: #007bff; color: #fff; padding: 5px 10px; border: none;" %>
+        </div>
+      <% end %>
+  </div>
+</main>

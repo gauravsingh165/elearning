@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<!--<div style="text-align:center">
 <h1>Create a New MCQ</h1>
 
 <%= form_for @mcq do |f| %>
@@ -42,4 +42,17 @@
 <% end %>
 <% end %>
 <%= link_to "Back to MCQs", mcqs_path %>
-</div>
+</div>-->
+
+
+<main class="container">
+  <%= link_to sanitize("&larr; Back to mcq"), root_path %>
+
+  <div class="header">
+    <h1>New ProductLine</h1>
+  </div>
+
+  <%= turbo_frame_tag @mcq do %>
+    <%= render "form", mcq: @mcq %>
+  <% end %>
+</main>

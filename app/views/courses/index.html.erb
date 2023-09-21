@@ -55,29 +55,51 @@
     }
 </style>
 
-  <br>
-   <div class="course-card"><h1 class="course-title">All Courses</h1></div>
+
+
+<br>
+
+
+
+<!--<h2>Available Courses</h2>
+
+<ul>
   <% @courses.each do |course| %>
-    <div class="course-card">
-      <h2><%= course.name %></h2>
+    <div class="course-card"> 
+  <h1><%= course.name %></h1>
+  <p><strong>Start Date:</strong> <%= course.start_date %></p>
+  <p><strong>End Date:</strong> <%= course.end_date %></p>
 
-      <div class="course-details">
-        <p><strong>Start Date:</strong> <%= course.start_date %></p>
-        <p><strong>End Date:</strong> <%= course.end_date %></p>
-      </div>
-
-      <div class="btn-container">
-        <%= link_to 'Enroll this Course', new_enrollment_path(course_id: @course), class: "btn btn-outline-primary" %>
-        <% if can? :update, @course %>
+  <div class="btn-container">
+    <%= link_to 'Back', courses_path , class: "btn btn-outline-danger"%>
+    <% if can? :update, course %>
         <%= link_to 'Edit', edit_course_path(course), class: "btn btn-outline-primary" %>
         <% end %>
-        <% if can? :update, @course %>
+        <% if can? :update, course %>
         <%= link_to "Admin Index", admin_index_path, class: "btn btn-outline-info" %>
         <% end %>
-        <% if can? :create, @course %>
+        <% if can? :create, course %>
         <%= link_to "New Course", new_course_path, class: "btn btn-outline-warning" %>
         <% end %>
-      </div>
-    </div>
+  </div>
+</div>
   <% end %>
+</ul>-->
+  <div>
+    <%= form_tag(courses_path, method: "get") do %>
+      <%= select_tag :search, options_for_select(["Paid","Free Trial","Custom"], params[:search]), prompt: "sort" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+<div style="text-align:center">
+  <div class="course form">
+    <div class="header">
+      <%= link_to "New course",new_course_path,class: "btn btn--primary", data: { turbo_frame: dom_id(Course.new) } %>
 
+    <%= turbo_frame_tag Course.new %>
+    <%= turbo_frame_tag "course_frame" do %>
+      <%= render 'course'%>
+    <% end %>
+<%= turbo_stream_from @course %>  </div>
+</div>  
+  </div>

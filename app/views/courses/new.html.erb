@@ -1,2 +1,15 @@
-<h1 class="form-title">Create a New Course</h1>
-<%= render 'courses/form'%>
+<%# <h1 class="form-title">Create a New Course</h1>
+<%= render 'courses/form'%> 
+
+
+<main class="course form">
+  <%= link_to sanitize("&larr; Back to course"), root_path %>
+
+  <div class="header">
+    <h1>New course</h1>
+  </div>
+
+  <%= turbo_frame_tag @course do %>
+    <%= render "form", product_line: @course %>
+  <% end %>
+</main>

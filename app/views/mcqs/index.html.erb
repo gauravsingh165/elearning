@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align:center">MCQ Questions</h1>
+<!--<h1 style="font-size: 50px; text-align:center">MCQ Questions</h1>
 
 <% @mcqs.each do |mcq| %>
   <div class="mcq" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
@@ -24,4 +24,19 @@
 <% if can? :create, @mcq %>
 <%= link_to "Add New MCQ", new_mcq_path, style: "font-size: 16px; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 3px;" %>
 <%end%>
-<%= link_to "Back" , root_path, class: "btn btn-outline-info"%>
+<%= link_to "Back" , root_path, class: "btn btn-outline-info"%>-->
+
+
+<div style="text-align:center">
+  <div class="mcq">
+    <div class="header">
+    <% if can? :create, @mcq %>
+      <%= link_to "New mcq",new_mcq_path,class: "btn btn--primary", data: { turbo_frame: dom_id(Mcq.new) } %>
+      <%end%>
+    </div>
+    <%= turbo_frame_tag Mcq.new %>
+    <%= turbo_frame_tag "mcq_frame" do %>
+      <%= render 'mcqs'%>
+    <% end %>
+<%= turbo_stream_from @mcqs %>  </div>
+</div>

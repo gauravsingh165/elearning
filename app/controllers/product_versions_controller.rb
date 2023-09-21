@@ -2,6 +2,11 @@ class ProductVersionsController < ApplicationController
   before_action :set_product_version, only: [:show, :edit, :update, :destroy]
 
   def index
+    if params[:search]
+      @product_version = ProductVersion.where("name LIKE ?", "%#{params[:search]}%")
+    else
+      @courses = Course.all
+    end
     @product_versions = ProductVersion.all
   end
 

@@ -13,4 +13,5 @@ class RegistrationsController < Devise::RegistrationsController
       students_url
     end
    end
+
 end

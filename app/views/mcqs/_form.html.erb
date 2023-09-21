@@ -1,7 +1,10 @@
-<%= simple_form_for product_version, html: { class: "product-version form" } do |f| %>
-  <% if product_version.errors.any? %>
+<div id="mcqa_list">
+  <%= turbo_stream_from "mcqs_list" %>
+  </div>
+<%= simple_form_for mcq, html: { class: "mcq form" } do |f| %>
+  <% if mcq.errors.any? %>
     <div class="error-message">
-      <%= product_version.errors.full_messages.to_sentence.capitalize %>
+      <%= mcq.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
 
@@ -12,7 +15,6 @@
       <%= f.input :option4, input_html: { autofocus: true } %>
        <%= f.input :correct_option, input_html: { autofocus: true } %>
         <%= f.input :course_id, input_html: { autofocus: true } %>
-   <%= f.input :features, input_html: { autofocus: true } %>
-  <%= link_to "Cancel", product_versions_path, class: "btn btn--light" %>
+  <%= link_to "Cancel", mcqs_path, class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>

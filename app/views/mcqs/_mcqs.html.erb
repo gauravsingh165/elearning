@@ -1,0 +1,12 @@
+<h1>All mcq</h1>
+<% @mcqs.each do |mcq| %>
+  <%= turbo_frame_tag mcq do %>
+    <div class="mcq">
+      <%= link_to mcq.question, mcq_path(mcq), data: { turbo_frame: "_top" } %>
+      <div class="header">
+        <%= button_to "Delete", mcq_path(mcq), method: :delete, class: "btn btn--light" %>
+        <%= link_to "Edit", edit_mcq_path(mcq), class: "btn btn--light" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <%= f.input :name, input_html: { autofocus: true } %>
+  <%= f.select :name, options_for_select(["select the options","Free Trial ","Paid Course","Custom"]),input_html: { autofocus: true } %>
    <%= f.input :features, input_html: { autofocus: true } %>
   <%= link_to "Cancel", product_versions_path, class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>

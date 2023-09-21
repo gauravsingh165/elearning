@@ -1,4 +1,4 @@
-<h1>User Details</h1>
+<!--<h1>User Details</h1>
 
 <%= turbo_frame_tag 'user_details' do %>
   <table>
@@ -25,4 +25,14 @@
   </table>
 <% end %>
 
-<%= link_to 'New User', new_user_detail_path, remote: true, class: 'btn btn-success' %>
+<%= link_to 'New User', new_user_detail_path, remote: true, class: 'btn btn-success' %>-->
+
+<div style="text-align:center">
+  <div class="user_details">
+    
+    <%= turbo_frame_tag User.new %>
+    <%= turbo_frame_tag "user_details_frame" do %>
+      <%= render 'user_details'%>
+    <% end %>
+<%= turbo_stream_from @users %>  </div>
+</div>

@@ -1,10 +1,15 @@
 class CoursesController < ApplicationController
       before_action :set_course, only: [:show, :edit, :update, :destroy]
     
+     
       def index
-        @courses = Course.all
+        if params[:search]
+          @courses = Course.where("name LIKE ?", "%#{params[:search]}%")
+        else
+          @courses = Course.all
+        end
+       
       end
-    
       def show
         @course = Course.find(params[:id])
         authorize! :read, @course
@@ -17,10 +22,14 @@ class CoursesController < ApplicationController
     
       def create
         @course = Course.new(course_params)
+    
         if @course.save
-          redirect_to @course, notice: 'Course was successfully created.'
+          respond_to do |format|
+            format.html { redirect_to courses_path, notice: "Product Line was successfully created." }
+            format.turbo_stream
+          end
         else
-          render :new
+          render :new, status: :unprocessable_entity
         end
       end
       
@@ -30,15 +39,18 @@ class CoursesController < ApplicationController
     
       def update
         if @course.update(course_params)
-          redirect_to @course, notice: 'Course was successfully updated.'
+          redirect_to courses_path, notice: "Product Line was successfully updated."
         else
-          render :edit
+          render :edit, status: :unprocessable_entity
         end
       end
-    
       def destroy
         @course.destroy
-        redirect_to courses_url, notice: 'Course was successfully destroyed.'
+    
+        respond_to do |format|
+          format.html { redirect_to courses_path, notice: "Product Line was successfully destroyed." }
+          format.turbo_stream
+        end
       end
     
       private

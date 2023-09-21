@@ -1,4 +1,10 @@
-<%= render 'user_details/form'%>
-<!--<%= turbo_frame_tag "user_#{@user.id}" do %>
+<!--<%= render 'user_details/form'%>
+<%= turbo_frame_tag "user_#{@user.id}" do %>
   <%= render 'user_details/form', user: @user %>
 <% end %>-->
+<main class="user_details">
+  <%= link_to sanitize("&larr; Back to product line"), admin_index_path %>
+  <%= turbo_frame_tag @product_line do %>
+    <%= render "form", product_line: @product_line %>
+  <% end %>
+</main>

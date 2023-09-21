@@ -1,0 +1,12 @@
+<h1>All course</h1>
+<% @courses.each do |course| %>
+  <%= turbo_frame_tag course do %>
+    <div class="course">
+      <%= link_to course.name, course_path(course), data: { turbo_frame: "_top" } %>
+      <div class="header">
+        <%= button_to "Delete", course_path(course), method: :delete, class: "btn btn--light" %>
+        <%= link_to "Edit", edit_course_path(course), class: "btn btn--light" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
