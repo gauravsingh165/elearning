@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= turbo_frame_tag "course" %>
+
   </head>
 
   <body style="background-color:PapayaWhip	 ;">
@@ -28,10 +30,10 @@
         <% end %>
         </li>
         <li class="nav-item">
-          <%= form_tag(courses_path, method: "get") do %>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search" %>
-           <% end %>
+          <%= form_tag courses_path, method: :get, data: { controller: "search", action: "submit->search#search" } do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search by course name..." %>
+            <%= submit_tag "Search" %>
+          <% end %>
         </li>
        
 

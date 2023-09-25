@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_13_131716) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_102513) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "product_version"
@@ -18,8 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_131716) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_line_id", null: false
+    t.integer "product_line_id"
     t.integer "product_version_id", null: false
+    t.string "type"
     t.index ["product_line_id"], name: "index_courses_on_product_line_id"
     t.index ["product_version_id"], name: "index_courses_on_product_version_id"
   end

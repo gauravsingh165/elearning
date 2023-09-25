@@ -2,11 +2,15 @@
 <% @courses.each do |course| %>
   <%= turbo_frame_tag course do %>
     <div class="course">
-      <%= link_to course.name, course_path(course), data: { turbo_frame: "_top" } %>
-      <div class="header">
-        <%= button_to "Delete", course_path(course), method: :delete, class: "btn btn--light" %>
-        <%= link_to "Edit", edit_course_path(course), class: "btn btn--light" %>
-      </div>
+      <div class="card card-body mt-5"> 
+        <h1><strong>Course Name:</strong><%= course.name%></h1><br>
+        <h1><strong>Start Date:</strong><%=  course.start_date%></h1><br>
+        <h1><strong>End Date:</strong><%=  course.end_date%></h1>
+        <% if can? :create, @course %>
+        <%= button_to "Delete", course_path(course), method: :delete, class: "btn btn-outline-danger" %>
+        <%= link_to "Edit", edit_course_path(course), class: "btn btn-outline-info" %>
+        <% end %>
+    </div>
     </div>
   <% end %>
 <% end %>

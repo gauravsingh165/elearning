@@ -85,17 +85,13 @@
 </div>
   <% end %>
 </ul>-->
-  <div>
-    <%= form_tag(courses_path, method: "get") do %>
-      <%= select_tag :search, options_for_select(["Paid","Free Trial","Custom"], params[:search]), prompt: "sort" %>
-      <%= submit_tag "Search" %>
-    <% end %>
-  </div>
+  
 <div style="text-align:center">
   <div class="course form">
     <div class="header">
-      <%= link_to "New course",new_course_path,class: "btn btn--primary", data: { turbo_frame: dom_id(Course.new) } %>
-
+     <% if can? :create, @course %>
+      <%= link_to "New course",new_course_path,class: "btn btn-outline-success", data: { turbo_frame: dom_id(Course.new) } %>
+    <% end %>
     <%= turbo_frame_tag Course.new %>
     <%= turbo_frame_tag "course_frame" do %>
       <%= render 'course'%>

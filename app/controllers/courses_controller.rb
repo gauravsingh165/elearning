@@ -22,16 +22,13 @@ class CoursesController < ApplicationController
     
       def create
         @course = Course.new(course_params)
-    
         if @course.save
-          respond_to do |format|
-            format.html { redirect_to courses_path, notice: "Product Line was successfully created." }
-            format.turbo_stream
-          end
+          render turbo_stream.replace("course", partial: "courses/course", locals: { course: @course })
         else
-          render :new, status: :unprocessable_entity
+          render turbo_stream: turbo_stream.replace("course", partial: "courses/form", locals: { course: @course })
         end
       end
+      
       
     
       def edit

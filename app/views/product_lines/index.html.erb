@@ -9,7 +9,7 @@
 <div style="text-align:center">
   <div class="product-line">
     <div class="header">
-      <%= link_to "New quote",new_product_line_path,class: "btn btn--primary", data: { turbo_frame: dom_id(ProductLine.new) } %>
+      <%= link_to "New ProductLine",new_product_line_path,class: "btn btn-outline-info", data: { turbo_frame: dom_id(ProductLine.new) } %>
     </div>
     <%= turbo_frame_tag ProductLine.new %>
     <%= turbo_frame_tag "product_line_frame" do %>

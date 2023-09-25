@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   resources :users
   resources :admin, only: [:index, :show, :edit, :update]
   resources :essays
+  # root "courses#index"
   root "students#index"
-  # root "admin#index"
 end

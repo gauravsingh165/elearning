@@ -1,10 +1,68 @@
-<!--
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  thead tr {
+    background-color: #f2f2f2;
+    border-bottom: 2px solid #333;
+  }
+
+  th {
+    text-align: center;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+
+  td:last-child {
+    text-align: center;
+    border-right: none;
+  }
+
+  button.delete-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  a.edit-link {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+     padding: 5px 10px;
+  }
+  button.delete-button:hover,
+    a.edit-link:hover {
+    opacity: 0.8;
+  }
+  td:nth-child(1) {
+    font-weight: bold;
+    color: #333;
+  }
+  td:nth-child(2) {
+    font-style: italic;
+    color: #666;
+  }
+  td:nth-child(3) {
+    font-weight: bold;
+  }
+</style>
 <table>
   <thead>
     <tr>
       <th>Email</th>
       <th>Role</th>
-      <th>Actions</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -14,15 +72,22 @@
         <td><%= user.role %></td>
         <td>
           <%= turbo_frame_tag "user_#{user.id}" do %>
-            <%= link_to "Edit", edit_user_detail_url(user), remote: true, data: { turbo_frame: "user_#{user.id}" } %>
+         
+         <%= link_to "Edit", edit_user_detail_url(user), remote: true, data: { turbo_frame: "user_#{user.id}" }, class: 'edit-link' %>
+          <% end %>
+        </td>
+        <td>
+          <%= turbo_frame_tag "user_#{user.id}" do %>
+         
+        <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
-</table>-->
+</table>
 
-<h1>All User</h1>
+<!--<h1>All User</h1>
 <% @users.each do |user| %>
   <%= turbo_frame_tag user do %>
     <div class="user_details">
@@ -34,7 +99,7 @@
       </div>
     </div>
   <% end %>
-<% end %>
+<% end %>-->
 
 
 
