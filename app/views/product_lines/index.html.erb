@@ -9,7 +9,9 @@
 <div style="text-align:center">
   <div class="product-line">
     <div class="header">
+     <% if can? :create, @product_version %>
       <%= link_to "New ProductLine",new_product_line_path,class: "btn btn-outline-info", data: { turbo_frame: dom_id(ProductLine.new) } %>
+      <% end %>
     </div>
     <%= turbo_frame_tag ProductLine.new %>
     <%= turbo_frame_tag "product_line_frame" do %>

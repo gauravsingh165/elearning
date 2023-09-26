@@ -3,8 +3,11 @@
     <div class="product-version">
       <%= link_to product_version.name, product_version_path(product_version), data: { turbo_frame: "_top" } %>
       <div class="product-version__actions">
+          <% if can? :update, @product_version %>
+
         <%= button_to "Delete", product_version_path(product_version), method: :delete, class: "btn btn--light" %>
         <%= link_to "Edit", edit_product_version_path(product_version), class: "btn btn--light" %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -2,8 +2,10 @@
 <div style="text-align:center">
   <div class="product-version">
     <div class="header">
+    <% if can? :create, @product_version %>
       <%= link_to "New Product Version",new_product_version_path,class: "btn btn--primary", data: { turbo_frame: dom_id(ProductVersion.new) } %>
     </div>
+    <% end %>
     <%= turbo_frame_tag ProductVersion.new %>
     <%= turbo_frame_tag "product_version_frame" do %>
       <%= render 'product_version'%>

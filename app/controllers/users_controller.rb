@@ -66,7 +66,7 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:email, :password, :role) # Adjust the permitted attributes as needed
-end
+  params.require(:user).permit(:email, :password, :role) 
 end
 
+end

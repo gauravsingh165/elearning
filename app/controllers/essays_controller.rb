@@ -3,7 +3,7 @@ class EssaysController < ApplicationController
 
   def index
     @essays = Essay.all
-    @essay = Essay.new  # Initialize a new Essay instance for use with Turbo Streams
+    @essay = Essay.new  #// Initialize a new Essay instance for use with Turbo Streams//
   end
 
   def show

@@ -4,8 +4,10 @@
     <div class="product-line">
       <%= link_to product_line.name, product_line_path(product_line), data: { turbo_frame: "_top" } %>
       <div class="header">
+      <% if can? :update, @product_version %>
         <%= button_to "Delete", product_line_path(product_line), method: :delete, class: "btn btn--light" %>
         <%= link_to "Edit", edit_product_line_path(product_line), class: "btn btn--light" %>
+      <% end %>
       </div>
     </div>
   <% end %>

@@ -1,6 +1,7 @@
 class ProductLinesController < ApplicationController
   before_action :set_product_line, only: [:show, :edit, :update, :destroy]
   def index
+    authorize! :access, :product_line_panel 
     @product_lines = ProductLine.all
 
     render 'product_lines/index' 

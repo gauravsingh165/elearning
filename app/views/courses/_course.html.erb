@@ -2,17 +2,34 @@
 <% @courses.each do |course| %>
   <%= turbo_frame_tag course do %>
     <div class="course">
-      <div class="card card-body mt-5"> 
-        <h1><strong>Course Name:</strong><%= course.name%></h1><br>
-        <h1><strong>Start Date:</strong><%=  course.start_date%></h1><br>
-        <h1><strong>End Date:</strong><%=  course.end_date%></h1>
-        <h1><strong>Type:</strong><%=  course.pver%></h1>
-
+      <div class="c-card "> 
+        <h2><strong style="color:green">Course Name:</strong><%= course.name%></h2><br>
+        <h2><strong style="color:green">Start Date:</strong><%=  course.start_date%></h2><br>
+        <h2><strong style="color:green">End Date:</strong><%=  course.end_date%></h2>
+        <h2 style="color:red"><strong style="color:green">Type:</strong><%=  course.pver.capitalize %></h2>
         <% if can? :create, @course %>
-        <%= button_to "Delete", course_path(course), method: :delete, class: "btn btn-outline-danger" %>
-        <%= link_to "Edit", edit_course_path(course), class: "btn btn-outline-info" %>
+          <%= button_to "Delete", course_path(course), method: :delete, class: "btn btn-outline-danger" %>
+          <%= link_to "Edit", edit_course_path(course), class: "btn btn-outline-info" %>
         <% end %>
-    </div>
+      </div>
     </div>
   <% end %>
 <% end %>
+
+<style>
+    .c-card {
+      background-color: #fff;
+      border: 10px solid #F4A460;
+      border-radius: 50px;
+      margin: 50px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 100);
+    }
+    h1 {
+	font-size: 5rem;
+	color: #FF6347;
+	font-family: cursive;
+	text-shadow: 6px 0 green;
+}
+
+ </style> 

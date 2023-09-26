@@ -14,7 +14,7 @@
 
   </head>
 
-  <body style="background-color:PapayaWhip	 ;">
+  <body style="background-color:  #2F4F4F	 ;">
   
   <nav class="navbar navbar-expand-lg navbar-red bg-dark fixed-top">
   <div class="container-fluid">
@@ -29,12 +29,13 @@
         <%= link_to "Admin Index", admin_index_path, class: "btn btn-outline-info" %>
         <% end %>
         </li>
-        <li class="nav-item">
-          <%= form_tag courses_path, method: :get, data: { controller: "search", action: "submit->search#search" } do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search by course name..." %>
-            <%= submit_tag "Search" %>
-          <% end %>
-        </li>
+       <li class="nav-item">
+  <%= form_tag courses_path, method: :get, data: { controller: "search", action: "submit->search#search" } do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by course name...", style: "border: 1px solid #ccc; padding: 5px; border-radius: 5px; font-size: 16px;" %>
+    <%= submit_tag "Search", style: "background-color: #007bff; color: #fff; border: none; padding: 5px 10px; border-radius: 5px; font-size: 16px; cursor: pointer;" %>
+  <% end %>
+</li>
+
        
 
           </a>
@@ -91,6 +92,7 @@
               </a>
             </div>
           </div>
+          
           <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
             <div
                  class="bg-image hover-overlay ripple shadow-1-strong rounded"

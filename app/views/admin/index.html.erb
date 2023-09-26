@@ -1,10 +1,77 @@
-<h1 style="font-size: 50px; text-align:center; color:Salmon">ADMIN Dashboard</h1><br>
-<div class="container">
-  <%= link_to "Essay", essays_url, class: "btn btn-outline-primary btn-block mb-3" %>
-  <%= link_to "MCQs", mcqs_path, class: "btn btn-outline-warning btn-block mb-3" %>
-  <%= link_to "Product Line", product_lines_url, class: "btn btn-outline-danger btn-block mb-3" %>
-  <%= link_to "Product Version", product_versions_url, class: "btn btn-outline-info btn-block mb-3" %>
-  <%= link_to "Courses", courses_url, class: "btn btn-outline-secondary btn-block mb-3" %>
-  <%= link_to "Users", user_details_url, class: "btn btn-outline-success btn-block mb-3" %>
-  <%= link_to "Student Dashboard", root_path, class: "btn btn-outline-info" %>  
+<h1 >ADMIN Dashboard</h1><br>
+
+<style>
+  .card {
+    display: inline-block;
+    width: 300px; /* Adjust the width as needed */
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff; /* Card background color */
+    border: 1px solid #ccc;
+    transition: transform 0.2s, box-shadow 0.2s; /* Add smooth transition */
+  }
+
+  .card:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a box shadow on hover */
+  }
+
+  .card img {
+    max-width: 100%;
+    max-height: 150px; /* Adjust the height as needed */
+    margin-bottom: 0px; /* Add space between the image and text */
+  }
+     h1 {
+    text-align:center;
+	font-size: 5rem;
+	color: #FF6347;
+	font-family: cursive;
+	text-shadow: 6px 0 #40E0D0;
+}
+</style>
+ <div class="container">
+  <div class="card">
+    <a href="<%= courses_url %>">
+      <img src="/assets/Course.png" alt="Image 1">
+    </a>
+  </div>
+ <div class="card">
+    <a href="<%= user_details_url %>">
+      <img src="/assets/udet.png" alt="Image 1">
+    </a>
+  </div>
+  <div class="card">
+    <a href="<%= mcqs_path %>">
+      <img src="/assets/mcq2.png" alt="Image 1">
+    </a>
+  </div>
+ 
+  
+  <div class="card">
+    <a href="<%= product_lines_url %>">
+      <img src="/assets/productline.jpg" alt="Image 1">
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="<%= essays_url %>">
+      <img src="/assets/essay.png" alt="Image 1">
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="<%= root_path %>">
+      <img src="/assets/sdash.png" alt="Image 1">
+    </a>
+  </div>
+  <div class="card">
+    <a href="<%= product_versions_url %>">
+      <img src="/assets/pver.png" alt="Image 1">
+    </a>
+  </div>
 </div>
+

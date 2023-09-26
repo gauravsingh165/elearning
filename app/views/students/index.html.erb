@@ -1,77 +1,74 @@
 <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+   
+     h1 {
+    text-align:center;
+  	font-size: 5rem;
+	  color: #FF6347;
+	  font-family: cursive;
+	  text-shadow: 6px 0 #40E0D8;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #ffffff;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-    }
+   
 
-    h1 {
-      text-align: center;
-    }
+     .card {
+    display: inline-block;
+    width: 300px; /* Adjust the width as needed */
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff; /* Card background color */
+    border: 1px solid #ccc;
+    transition: transform 0.2s, box-shadow 0.2s; /* Add smooth transition */
+  }
 
-    .dashboard-links {
-      text-align: center;
-      margin-top: 20px;
-    }
+  .card:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a box shadow on hover */
+  }
 
-    .dashboard-links a {
-      display: block;
-      margin-bottom: 10px;
-      padding: 10px;
-      text-decoration: none;
-      background-color: #007bff;
-      color: #ffffff;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .dashboard-links a:hover {
-      background-color: #0056b3;
-    }
-
-    .admin-link {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .admin-link a {
-      display: inline-block;
-      padding: 10px 20px;
-      text-decoration: none;
-      background-color: #17a2b8;
-      color: #ffffff;
-      border: 1px solid #17a2b8;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .admin-link a:hover {
-      background-color: #128ca7;
-    }
+  .card img {
+    max-width: 100%;
+    max-height: 150px; /* Adjust the height as needed */
+    margin-bottom: 0px; /* Add space between the image and text */
+  }
 </style>
 <br>
-  <div class="container">
+   <!--<div class="container">
     <h1>Student Dashboard</h1>
     <div class="dashboard-links">
-      <%= link_to "MCQ", mcqs_path %><br>
-      <br>
       <%= link_to 'Enroll in this Course', new_enrollment_path(course_id: @course) %><br>
       <br>
-      <%= link_to 'Essay', essays_path %><br>
-      <br>
-      <%= link_to 'COURSE', courses_path %>
     </div>
-    <% if can? :update, @course %>
+
+   <% if can? :access, @course %>
       <div class="admin-link">
         <%= link_to "Admin Index", admin_index_path, class: "btn btn-outline-info" %>
       </div>
     <% end %>
+  </div>-->
+<h1> Student Dashboard</h1>
+ <div class="container">
+  <div class="card">
+    <a href="<%= courses_url %>">
+      <img src="/assets/Course.png" alt="Image 1">
+    </a>
+  </div>
+  <div class="card">
+    <a href="<%= essays_url %>">
+      <img src="/assets/essay.png" alt="Image 1">
+    </a>
+  </div>
+    <div class="card">
+    <a href="<%= mcqs_path %>">
+      <img src="/assets/mcq.png" alt="Image 1">
+    </a>
+  </div><br>
+   <div class="card">
+    <a href="<%= new_enrollment_path(course_id: @course)  %>">
+      <img src="/assets/enr.png" alt="Image 1">
+    </a>
+  </div>
   </div>

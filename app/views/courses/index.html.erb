@@ -53,6 +53,7 @@
       background-color: #ffc107;
       color: #000;
     }
+    
 </style>
 
 
@@ -85,12 +86,12 @@
 </div>
   <% end %>
 </ul>-->
-  
-  <%= form_tag courses_path, method: :get, id: "course-filter-form" do %>
-    <label for="course_type">Course Type:</label>
-    <%= select_tag :course_type, options_for_select(['All', 'Free', 'Paid', 'Custom'], params[:course_type]), id: "course-type-select" %>
-  <%= submit_tag "Filter" %>
+  <%= form_tag courses_path, method: :get, id: "course-filter-form", style: " padding: 10px;" do %>
+  <label for="course_type" style="font-weight: bold;">Course Type:</label>
+  <%= select_tag :course_type, options_for_select(['All', 'Free', 'Paid', 'Custom'], params[:course_type]), id: "course-type-select", style: "padding: 5px; margin: 5px; background-color: #f0f0f0; border: 1px solid #ccc;" %>
+  <%= submit_tag "Filter", style: "background-color: #007bff; color: #fff; padding: 5px 10px; border: none; cursor: pointer;" %>
 <% end %>
+
 <div style="text-align:center">
   <div class="course form">
     <div class="header">
