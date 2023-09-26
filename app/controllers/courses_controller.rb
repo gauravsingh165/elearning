@@ -1,14 +1,29 @@
 class CoursesController < ApplicationController
       before_action :set_course, only: [:show, :edit, :update, :destroy]
     
-     
       def index
+        @courses = Course.all
         if params[:search]
           @courses = Course.where("name LIKE ?", "%#{params[:search]}%")
         else
           @courses = Course.all
         end
-       
+        case params[:course_type]
+        when "Free"
+          @courses = @courses.where(pver: "free")
+        when "Paid"
+          @courses = @courses.where(pver: "paid")
+        when "Custom"
+          @courses = @courses.where(pver: "custom")
+
+        end
+      
+        @courses = @courses.order(:pver)
+      
+        respond_to do |format|
+          format.html
+          format.js   # This line should be included for AJAX requests
+        end
       end
       def show
         @course = Course.find(params[:id])
@@ -57,7 +72,8 @@ class CoursesController < ApplicationController
       end
     
       def course_params
-        params.require(:course).permit(:name, :start_date, :end_date, :product_line_id, :product_version_id)
+        params.require(:course).permit(:name, :start_date, :end_date, :pver, :product_line_id, :product_version_id)
       end
+      
     
 end

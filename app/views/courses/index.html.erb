@@ -86,6 +86,11 @@
   <% end %>
 </ul>-->
   
+  <%= form_tag courses_path, method: :get, id: "course-filter-form" do %>
+    <label for="course_type">Course Type:</label>
+    <%= select_tag :course_type, options_for_select(['All', 'Free', 'Paid', 'Custom'], params[:course_type]), id: "course-type-select" %>
+  <%= submit_tag "Filter" %>
+<% end %>
 <div style="text-align:center">
   <div class="course form">
     <div class="header">
@@ -99,3 +104,4 @@
 <%= turbo_stream_from @course %>  </div>
 </div>  
   </div>
+

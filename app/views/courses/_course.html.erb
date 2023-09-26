@@ -6,6 +6,8 @@
         <h1><strong>Course Name:</strong><%= course.name%></h1><br>
         <h1><strong>Start Date:</strong><%=  course.start_date%></h1><br>
         <h1><strong>End Date:</strong><%=  course.end_date%></h1>
+        <h1><strong>Type:</strong><%=  course.pver%></h1>
+
         <% if can? :create, @course %>
         <%= button_to "Delete", course_path(course), method: :delete, class: "btn btn-outline-danger" %>
         <%= link_to "Edit", edit_course_path(course), class: "btn btn-outline-info" %>

@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_102513) do
     t.datetime "updated_at", null: false
     t.integer "product_line_id"
     t.integer "product_version_id", null: false
-    t.string "type"
+    t.string "pver"
     t.index ["product_line_id"], name: "index_courses_on_product_line_id"
     t.index ["product_version_id"], name: "index_courses_on_product_version_id"
   end
